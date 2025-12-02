@@ -1,0 +1,126 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<div class="maingood--conteflipping">
+  <h3>Customers love Austin Boutique</h3>
+   <div class="testigridmains swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="othermains--gbimind">
+          <img src="https://cdn.shopify.com/s/files/1/0912/7890/1630/files/a-bright-and-airy-lifestyle-photograph-f_KWzFX78xTT2IseQedj_1oQ_Y1sU4yipTnavINlPw8sLRg.png?v=1747775694">
+        </div>
+      </div>
+            <div class="swiper-slide">
+        <div class="othermains--gbimind">
+          <img src="https://cdn.shopify.com/s/files/1/0912/7890/1630/files/a-photograph-of-a-smiling-woman-with-flo_CQX7y-qiRDmnCWurDR326g_l_fSELl1RP2s7YXmacBV6Q.png?v=1747775693">
+        </div>
+      </div>
+            <div class="swiper-slide">
+        <div class="othermains--gbimind">
+          <img src="https://cdn.shopify.com/s/files/1/0912/7890/1630/files/a-photograph-of-a-cheerful-young-blonde-_rP06Yx9LR8OdCT_JxXhItw_T7JwVwd7TPGZp1zyJwVhpg.png?v=1747775693">
+        </div>
+      </div>
+            <div class="swiper-slide">
+        <div class="othermains--gbimind">
+          <img src="https://cdn.shopify.com/s/files/1/0912/7890/1630/files/a-photograph-of-a-stylish-woman-with-lon_pyqmGOfhSpCup9zA06u8MQ_Eri15WlVQoWa0ZoUW4u3ew.png?v=1747775693">
+        </div>
+      </div>
+            <div class="swiper-slide">
+        <div class="othermains--gbimind">
+          <img src="https://cdn.shopify.com/s/files/1/0912/7890/1630/files/VfFzHibHTHOkIDXMDuLPIg.webp?v=1747775914">
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Testimonial Grid",
+    "settings": [
+],
+
+    "presets": [
+      {
+        "name": "Testimonial Grid",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+  <style>
+  .maingood--conteflipping h3 {
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.maingood--conteflipping img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.maingood--conteflipping {
+    padding: 0px 20px;
+}
+.maingood--conteflipping img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.maingood--conteflipping .swiper-pagination {
+    position: unset !important;
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+.maingood--conteflipping span.swiper-pagination-bullet {
+    background: black !important;
+    width: 9px !important;
+    height: 9px !important;
+}
+.maingood--conteflipping {
+    max-width: 1300px !important;
+    margin: auto;
+}
+  </style>
+  <script>
+    var swiper = new Swiper(".testigridmains", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+                240: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+      },
+    });
+  </script>

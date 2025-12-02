@@ -1,0 +1,143 @@
+{% schema %}
+{
+  "name": "Countdown Timer Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "bar_height",
+      "label": "Bar Height (px)",
+      "min": 20,
+      "max": 99,
+      "step": 1,
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "message",
+          "label": "Message",
+          "default": "Limited Time Offer!"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font Size (px)",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "default": 18
+        }
+      ]
+    },
+    {
+      "type": "countdown",
+      "name": "Countdown Timer",
+      "settings": [
+        {
+          "type": "color",
+          "id": "timer_text_color",
+          "label": "Timer Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "timer_font_size",
+          "label": "Timer Font Size (px)",
+          "min": 10,
+          "max": 50,
+          "step": 1,
+          "default": 24
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Timer Bar",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "countdown"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div id="countdown-bar" style="
+  background: {{ section.settings.bg_color }};
+  height: {{ section.settings.bar_height }}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+">
+  {% for block in section.blocks %}
+    {% if block.type == "text" %}
+      <span style="
+        color: {{ block.settings.text_color }};
+        font-size: {{ block.settings.font_size }}px;
+        padding: 0 10px;
+      ">
+        {{ block.settings.message }}
+      </span>
+    {% elsif block.type == "countdown" %}
+      <span id="countdown-timer" style="
+        color: {{ block.settings.timer_text_color }};
+        font-size: {{ block.settings.timer_font_size }}px;
+        padding: 0 10px;
+      "></span>
+      <script>
+        function startCountdown() {
+          let now = new Date();
+          let endTime = new Date();
+          endTime.setHours(23, 59, 59, 999);
+
+          if (now >= endTime) {
+            endTime.setDate(endTime.getDate() + 1);
+          }
+
+          function updateTimer() {
+            let timeRemaining = endTime - new Date();
+            let hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+            let minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+            let seconds = Math.floor((timeRemaining / 1000) % 60);
+
+            document.getElementById("countdown-timer").textContent =
+              (hours < 10 ? "0" : "") + hours + ":" +
+              (minutes < 10 ? "0" : "") + minutes + ":" +
+              (seconds < 10 ? "0" : "") + seconds;
+
+            if (timeRemaining > 0) {
+              setTimeout(updateTimer, 1000);
+            } else {
+              startCountdown();
+            }
+          }
+          updateTimer();
+        }
+        startCountdown();
+      </script>
+    {% endif %}
+  {% endfor %}
+</div>
